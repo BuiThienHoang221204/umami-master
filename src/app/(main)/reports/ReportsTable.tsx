@@ -29,7 +29,14 @@ export function ReportsTable({ data = [], showDomain }: { data: any[]; showDomai
         {row => {
           const { id, name, userId, website } = row;
           return (
-            <>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+            >
               {(user.id === userId || user.id === website?.userId) && (
                 <ReportDeleteButton reportId={id} reportName={name} />
               )}
@@ -39,7 +46,7 @@ export function ReportsTable({ data = [], showDomain }: { data: any[]; showDomai
                 </Icon>
                 <Text>{formatMessage(labels.view)}</Text>
               </LinkButton>
-            </>
+            </div>
           );
         }}
       </GridColumn>

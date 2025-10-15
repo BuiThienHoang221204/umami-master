@@ -4,7 +4,7 @@ import { useMessages } from '@/components/hooks';
 import styles from './Pager.module.css';
 
 export interface PagerProps {
-  page: number;
+  page: number | string;
   pageSize: number;
   count: number;
   onPageChange: (nextPage: number) => void;
@@ -22,7 +22,7 @@ export function Pager({ page, pageSize, count, onPageChange, className }: PagerP
   }
 
   const handlePageChange = (value: number) => {
-    const nextPage = page + value;
+    const nextPage = Number(page) + value;
 
     if (nextPage > 0 && nextPage <= maxPage) {
       onPageChange(nextPage);
